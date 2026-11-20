@@ -1,4 +1,5 @@
 const { db, admin } = require('../config/firebase');
+const { Timestamp } = require('firebase-admin/firestore');
 
 const COLLECTION = 'tips';
 
@@ -67,7 +68,7 @@ async function createTip(input) {
     throw err;
   }
 
-  const now = admin.firestore.Timestamp.now();
+  const now = Timestamp.now();
   const docRef = await db.collection(COLLECTION).add({
     ...tip,
     createdAt: now,
@@ -157,7 +158,7 @@ async function updateTip(id, updates) {
 
   await docRef.update({
     ...partial,
-    updatedAt: admin.firestore.Timestamp.now(),
+    updatedAt: Timestamp.now(),
   });
 
   const updated = await docRef.get();
@@ -192,7 +193,7 @@ async function listTipsPaginated({
   if (startAfterDate) {
     const ts =
       typeof startAfterDate === 'string'
-        ? admin.firestore.Timestamp.fromDate(new Date(startAfterDate))
+        ? Timestamp.fromDate(new Date(startAfterDate))
         : startAfterDate;
     q = q.startAfter(ts);
   }
