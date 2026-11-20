@@ -126,12 +126,12 @@ const serviceAccount = {
   universe_domain: process.env.FIREBASE_UNIVERSE_DOMAIN,
 };
 
-if (!admin.apps.length) {
+//if (!admin.apps.length) {
   admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
     projectId: process.env.FIREBASE_PROJECT_ID,
   });
-}
+//}
 
 const auth = admin.auth();
 const db = admin.firestore();
