@@ -38,8 +38,8 @@ function validateTip(tip) {
   if (!/^\d{2}:\d{2}$/.test(tip.time)) errors.push('time must be HH:MM');
   if (!['won', 'pending', 'lost'].includes(tip.won))
     errors.push('won must be "won", "pending", or "lost"');
-  if (!['Finish', 'Pending', 'Live'].includes(tip.status))
-    errors.push('status must be "Finish", "Pending", or "Live"');
+  if (!['finish', 'pending', 'live'].includes(tip.status))
+    errors.push('status must be "finish", "pending", or "live"');
   return errors;
 }
 
