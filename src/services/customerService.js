@@ -1,6 +1,6 @@
 const { db, admin } = require('../config/firebase');
 
-const COLLECTION = 'customers';
+const COLLECTION = 'users';
 
 /**
  * Create a customer
